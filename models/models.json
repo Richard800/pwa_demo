@@ -1,0 +1,9 @@
+[
+    {
+        "name": "Cimda_girl_vrm",
+        "path": "../models/cimda_girl_01_retarget_06_avg.vrm",
+        "type": "vrm",
+        "isBuildIn": true,
+        "picBg": "./img/cimda_girl_01.png"
+    }
+]

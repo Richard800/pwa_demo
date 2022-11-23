@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#009578">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+    <script src="./kalidokit/dist/kalidokit.umd.js"></script>
+    <!-- <script src="./node_modules/three/build/three.js"></script>
+    <script src="./node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="./node_modules/three/examples/js/loaders/FBXLoader.js"></script>
+    <script src="./node_modules/three/examples/js/libs/fflate.min.js"></script>
+    <script src="./node_modules/three/examples/js/controls/OrbitControls.js"></script>
+    <script src="./node_modules/three/examples/js/libs/stats.min.js"></script>
+    <script src="./node_modules/@pixiv/three-vrm/lib/three-vrm.js"></script> -->
+    <script src="three/three.js"></script>
+    <script src="three/GLTFLoader.js"></script>
+    <script src="three/FBXLoader.js"></script>
+    <script src="three/fflate.min.js"></script>
+    <script src="three/OrbitControls.js"></script>
+    <script src="three/stats.min.js"></script>
+    <script src="three-vrm.js"></script>
+
+    <script type="text/javascript" src="./models/models.json"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/master.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/192x192.png">
+    <title>Document</title>
+</head>
+<body>
+    <div class="choose" id="vue-mount" v-show="true">
+        <label for="text">Choose a method:</label>
+
+        <input id="camera_radio" type="radio" name="group1" value="camera" v-model="videoSource" onclick="choose_camera()">
+        <label for="camera">Camera</label>
+        <input id="video_radio" type="radio" name="group1" value="file" v-model="videoSource" onclick="choose_video()">
+        <label for="video">Video</label>
+        <span style="margin-top: -100px; margin-left: 60px"></span>
+        <div class="start_button">
+            <input  type="button" id="btn" onclick="start_function()" value="Start"></input>
+        </div>
+        <div 
+            style="
+                margin-top: 10px;
+                margin-left: -70%;"
+            >
+            <input 
+                type="file" 
+                accept="video/*" 
+                id="upload" 
+                v-show="videoSource == 'file'" 
+                onchange="upload()">
+        </div>    
+    </div>
+
+    
+
+    <div 
+        id="model"
+        style="
+                width:48%;
+                border: solid 1px #ccc;
+                border-radius: 10px;
+                height: fit-content;
+                top: 100px;
+                left: 10px;
+                overflow: hidden;
+                position: fixed;
+                "
+    ></div>
+
+    <div class="frame">
+        <div>
+            <canvas
+            class="guides"
+            style="
+                width: 48%;
+                border: solid 1px #ccc;
+                border-radius: 10px;
+                height: auto;
+                overflow: hidden;
+                position: fixed;
+                top: 100px;
+                left: 50%;
+                z-index: 10;
+                pointer-events: none;
+            "></canvas>
+        </div>
+        <div class="video_frame">
+            <video
+            class="input_video"
+            muted
+            style="
+                width: 48%;
+                border: solid 1px #ccc;
+                border-radius: 10px;
+                height: auto;
+                overflow: hidden;
+                position: fixed;
+                top: 100px;
+                left: 50%;
+            "
+        ></video>
+        </div>
+    </div>
+    <div
+        class="loading"
+        style="
+        position: fixed;
+        width: 400px;
+        height: 120px;
+        left: calc(50vw - 200px);
+        top: calc(50vh - 60px);
+        z-index: 1000;
+        background: #fffa;
+        border: solid 1px #ccc;
+        text-align: center;
+        line-height: 120px;
+        border-radius: 10px;
+        backdrop-filter: blur(20px) saturate(1.8);"
+        >
+        Loading
+    </div>
+    <script src="./script.js" ></script>
+    <script src="./src/index.js"></script>
+</body>
+</html>
+

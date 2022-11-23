@@ -1,0 +1,20 @@
+{
+    "name": "SysMocap Web",
+    "short_name": "Mocap",
+    "start_url": ".",
+    "background_color": "#6dcdb1",
+    "theme_color": "#009578",
+    "display": "standalone", 
+    "icons": [
+        {
+            "src": "images/192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "images/512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

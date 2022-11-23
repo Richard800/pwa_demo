@@ -1,0 +1,21 @@
+/* input[type="radio"] {
+    margin-top: 10px;
+    margin-left: 100px;
+} */
+.choose {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* input[id='camera'] {
+    margin-left: 20px;
+} */
+/* 
+input[id="video"] {
+    margin-left: 20px;
+} */
+
+.start_button {
+    margin-top: -20px;
+    margin-left: 50%;
+}
